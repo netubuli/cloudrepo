@@ -1,9 +1,12 @@
 package com.web.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +24,9 @@ public class Loan {
 	@Column(name="loanamount")
 	private Double loanAmount;
 
+	@OneToMany(mappedBy = "loan")
+	private List<Repayment> repayments;
+	
 	public Loan() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -53,6 +59,14 @@ public class Loan {
 
 	public void setLoanAmount(Double loanAmount) {
 		this.loanAmount = loanAmount;
+	}
+
+	public List<Repayment> getRepayments() {
+		return repayments;
+	}
+
+	public void setRepayments(List<Repayment> repayments) {
+		this.repayments = repayments;
 	}
 
 	
